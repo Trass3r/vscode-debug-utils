@@ -1,13 +1,13 @@
 {
 	"name": "vscode-debug-utils",
-	"displayName": "VSCode PerfTips",
+	"displayName": "VSCode PerfTips/CodeMap",
 	"author": {
 		"name": "Andreas Hollandt"
 	},
 	"repository": {
 		"url": "https://github.com/Trass3r/vscode-debug-utils"
 	},
-	"description": "Implements debugger PerfTips as known from Visual Studio",
+	"description": "Implements debugger PerfTips and CodeMap as known from Visual Studio",
 	"publisher": "trass3r",
 	"license": "MIT",
 	"version": "0.0.3",
@@ -33,7 +33,11 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"extensionDependencies": [
+		"tintinweb.graphviz-interactive-preview"
 	],
+	"dependencies": {
+		"ts-graphviz": "^0.16.0"
+	},
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",

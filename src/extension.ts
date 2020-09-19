@@ -1,14 +1,26 @@
 import * as vs from 'vscode';
 import { PerfTipsProvider } from "./perftips";
+import { CodeMapProvider } from "./codemap";
 
 // this method is called when your extension is activated
 export function activate(context: vs.ExtensionContext) {
-	const tracker = new PerfTipsProvider();
+	const perftips = new PerfTipsProvider();
 	let disposable = vs.debug.registerDebugAdapterTrackerFactory("*", {
 		createDebugAdapterTracker(_session: vs.DebugSession) {
-			return tracker;
+			return perftips;
 		}
 	});
+	context.subscriptions.push(disposable);
+
+	const codemap = new CodeMapProvider();
+	disposable = vs.debug.registerDebugAdapterTrackerFactory("*", {
+		createDebugAdapterTracker(_session: vs.DebugSession) {
+			return codemap;
+		}
+	});
+	context.subscriptions.push(disposable);
+
+	disposable = vs.workspace.registerTextDocumentContentProvider("dot", codemap);
 	context.subscriptions.push(disposable);
 
 	const logDAP = vs.workspace.getConfiguration('debug-utils').get('logDAP');
