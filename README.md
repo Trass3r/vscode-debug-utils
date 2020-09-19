@@ -8,6 +8,12 @@ This is a VSCode extension containing developer utilities built on the [DebugAda
 
 Whenever the debugger stops execution the elapsed time since the last stop is displayed after the new code line.
 
+## [CodeMaps](https://docs.microsoft.com/en-us/visualstudio/modeling/use-code-maps-to-debug-your-applications)
+
+![screenshot](https://user-images.githubusercontent.com/404623/183659131-d23fc42b-ecb8-480a-a10b-2a8128a05e4c.gif)
+
+The extension adds a command to open a code map which gets incrementally built while stepping through the code.
+
 ## Known Issues
 
 - It has only been tested with the C++ and C# debuggers.
