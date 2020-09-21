@@ -1,6 +1,7 @@
 import * as vs from 'vscode';
 import { DebugProtocol as dap } from '@vscode/debugprotocol';
 import * as gv from "ts-graphviz";
+//import * as vis from 'vis-network';
 
 /** @sealed */
 export class CodeMapProvider implements vs.DebugAdapterTracker, vs.TextDocumentContentProvider  {
