@@ -1,11 +1,11 @@
 import * as vs from 'vscode';
-import { Tracker } from "./tracker";
+import { PerfTipsProvider } from "./perftips";
 
 // this method is called when your extension is activated
 export function activate(context: vs.ExtensionContext) {
-	const tracker = new Tracker();
+	const tracker = new PerfTipsProvider();
 	const disposable = vs.debug.registerDebugAdapterTrackerFactory("*", {
-		createDebugAdapterTracker(session: vs.DebugSession) {
+		createDebugAdapterTracker(_session: vs.DebugSession) {
 			return tracker;
 		}
 	});

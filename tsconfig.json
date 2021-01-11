@@ -9,6 +9,7 @@
 		"sourceMap": true,
 		"rootDir": "src",
 		"strict": true,
+		"strictPropertyInitialization": false,
 
 		// https://www.typescriptlang.org/tsconfig#Additional_Checks_6176
 		"noImplicitReturns": true,
