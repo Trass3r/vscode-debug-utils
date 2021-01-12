@@ -15,6 +15,7 @@
 		"vscode": "^1.48.0"
 	},
 	"categories": [
+		"Debuggers",
 		"Other"
 	],
 	"activationEvents": [
@@ -47,5 +48,17 @@
 		"typescript": "^3.8.3",
 		"vscode-test": "^1.4.0",
 		"vsce": "^1.83.0"
+	},
+	"contributes": {
+		"configuration": {
+			"title": "PerfTips",
+			"properties": {
+				"debug-utils.logDAP": {
+					"type": "boolean",
+					"default": false,
+					"description": "Log all DAP messages"
+				}
+			}
+		}
 	}
 }

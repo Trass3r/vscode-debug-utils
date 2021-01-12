@@ -79,7 +79,6 @@ export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 
 	// @override
 	onDidSendMessage(msg: dap.ProtocolMessage) {
-		//console.log(`< ${typeof msg} ${JSON.stringify(msg, undefined, 2)}`);
 		if (msg.type === "event" && (msg as dap.Event).event === "stopped") {
 			this.onStoppedEvent(msg as dap.StoppedEvent);
 			return;
@@ -93,7 +92,6 @@ export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 
 	// @override
 	onWillReceiveMessage(msg: dap.ProtocolMessage) {
-		//console.log(`> ${typeof msg} ${JSON.stringify(msg, undefined, 2)}`);
 		if (msg.type !== "request")
 			return;
 
