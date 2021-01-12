@@ -61,7 +61,8 @@ export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 		if (!frame.source)
 			return;
 
-		const srcuri = vs.debug.asDebugSourceUri(frame.source);
+		// work around https://github.com/microsoft/vscode/issues/114229
+		const srcuri = frame.source.sourceReference ? vs.debug.asDebugSourceUri(frame.source) : vs.Uri.file(frame.source.path!);
 		// FIXME: this will open another editor if we are in a different view column
 		const editor = await vs.window.showTextDocument(srcuri);
 
