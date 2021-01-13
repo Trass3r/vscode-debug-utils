@@ -23,7 +23,7 @@
 	],
 	"main": "./out/extension.js",
 	"scripts": {
-		"bundle":  "./node_modules/.bin/esbuild src/extension.ts --bundle --minify --sourcemap --external:vscode --outfile=./out/extension.js",
+		"bundle":  "./node_modules/.bin/esbuild src/extension.ts --bundle --target=es2018 --minify --sourcemap --external:vscode --outfile=./out/extension.js",
 		"vscode:prepublish": "npm run bundle",
 		"package": "node_modules/.bin/vsce package",
 		"compile": "tsc -p ./",
