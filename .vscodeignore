@@ -1,5 +1,5 @@
 *
 */**
-!out/extension.js
+!out/*.js
 !package.json
 !README.md
