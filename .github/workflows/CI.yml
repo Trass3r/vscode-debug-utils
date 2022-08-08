@@ -9,18 +9,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: '12'
+        node-version: latest
     - run: npm install
     - name: Run tests
       continue-on-error: true
-      uses: GabrielBB/xvfb-action@v1.4
+      uses: GabrielBB/xvfb-action@v1.6
       with:
         run: npm test
     - run: npm run package
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: VSIX
         path: '*.vsix'

@@ -12,7 +12,7 @@
 	"license": "MIT",
 	"version": "0.0.3",
 	"engines": {
-		"vscode": "^1.48.0"
+		"vscode": "^1.70.0"
 	},
 	"categories": [
 		"Debuggers",
@@ -36,20 +36,20 @@
 		"eamodio.gitlens"
 	],
 	"devDependencies": {
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.0",
-		"@types/node": "^14.0.27",
-		"@types/vscode": "^1.48.0",
-		"@typescript-eslint/eslint-plugin": "^3.8.0",
-		"@typescript-eslint/parser": "^3.8.0",
-		"esbuild": "^0.8.31",
-		"eslint": "^7.6.0",
-		"glob": "^7.1.6",
-		"mocha": "^8.0.1",
-		"typescript": "^3.8.3",
-		"vsce": "^1.83.0",
-		"vscode-debugprotocol": "^1.43.0",
-		"vscode-test": "^1.4.0"
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "^18.6.5",
+		"@types/vscode": "^1.70.0",
+		"@typescript-eslint/eslint-plugin": "^5.33.0",
+		"@typescript-eslint/parser": "^5.33.0",
+		"@vscode/debugprotocol": "^1.57.0",
+		"@vscode/test-electron": "^2.1.5",
+		"esbuild": "^0.14.54",
+		"eslint": "^8.21.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.4",
+		"vsce": "^2.10.0"
 	},
 	"contributes": {
 		"configuration": {
