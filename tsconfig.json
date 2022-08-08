@@ -15,6 +15,7 @@
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUnusedLocals": true,
+		"noImplicitOverride": true,
 	},
 	"exclude": [
 		"node_modules",

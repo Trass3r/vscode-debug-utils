@@ -1,5 +1,5 @@
 import * as vs from 'vscode';
-import { DebugProtocol as dap } from 'vscode-debugprotocol';
+import { DebugProtocol as dap } from '@vscode/debugprotocol';
 
 export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 
