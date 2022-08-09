@@ -33,7 +33,6 @@
 		"test": "node ./out/test/runTest.js"
 	},
 	"extensionDependencies": [
-		"eamodio.gitlens"
 	],
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
@@ -61,6 +60,26 @@
 					"description": "Log all DAP messages"
 				}
 			}
-		}
+		},
+		"colors": [
+			{
+				"id": "debugutils.trailingLineBackgroundColor",
+				"description": "Specifies the background color of the PerfTips",
+				"defaults": {
+					"dark": "#00000000",
+					"light": "#00000000",
+					"highContrast": "#00000000"
+				}
+			},
+			{
+				"id": "debugutils.trailingLineForegroundColor",
+				"description": "Specifies the foreground color of the PerfTips",
+				"defaults": {
+					"dark": "#99999959",
+					"light": "#99999959",
+					"highContrast": "#99999999"
+				}
+			}
+		]
 	}
 }
