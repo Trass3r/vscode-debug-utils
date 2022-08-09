@@ -84,6 +84,13 @@
 					"highContrast": "#99999999"
 				}
 			}
+		],
+		"commands": [
+			{
+				"command": "debug-utils.showCodeMap",
+				"title": "Build a Code Map during debugging",
+				"when": "inDebugMode"
+			}
 		]
 	}
 }
