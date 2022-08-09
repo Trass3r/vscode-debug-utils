@@ -12,10 +12,17 @@ export function activate(context: vs.ExtensionContext) {
 	});
 	context.subscriptions.push(disposable);
 
+	// when the command is run a debug session is already active
+	// then it'd be too late to register the tracker, so do it eagerly
 	const codemap = new CodeMapProvider();
+	disposable =  vs.commands.registerCommand("debug-utils.showCodeMap", () => {
+		codemap.activate();
+	});
+	context.subscriptions.push(disposable);
+
 	disposable = vs.debug.registerDebugAdapterTrackerFactory("*", {
 		createDebugAdapterTracker(_session: vs.DebugSession) {
-			return codemap;
+			return codemap; // null is also possible
 		}
 	});
 	context.subscriptions.push(disposable);
