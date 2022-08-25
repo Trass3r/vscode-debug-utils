@@ -22,6 +22,11 @@ export class CodeMapProvider implements vs.DebugAdapterTracker, vs.TextDocumentC
 		const args = {
 			document: this.dotDocument,
 			callback: (panel: any /* PreviewPanel */) => {
+				const graphvizConfig = vs.workspace.getConfiguration('graphviz-interactive-preview');
+				const preserveFocus = graphvizConfig.get('preserveFocus');
+				if (preserveFocus)
+					return;
+
 				// we have to switch back to the original editor group to prevent issues
 				const webpanel: vs.WebviewPanel = panel.panel;
 				const disposable = webpanel.onDidChangeViewState(e => {
@@ -47,7 +52,10 @@ export class CodeMapProvider implements vs.DebugAdapterTracker, vs.TextDocumentC
 			title: 'Call Graph',
 		};
 
-		vs.commands.executeCommand("graphviz-interactive-preview.preview.beside", args);
+		const graphvizConfig = vs.workspace.getConfiguration('graphviz-interactive-preview');
+		const openAutomatically = graphvizConfig.get('openAutomatically');
+		if (!openAutomatically)
+			vs.commands.executeCommand("graphviz-interactive-preview.preview.beside", args);
 	}
 
 	/** @override TextDocumentContentProvider */
