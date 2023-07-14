@@ -1,5 +1,5 @@
 import * as vs from 'vscode';
-import { DebugProtocol as dap } from 'vscode-debugprotocol';
+import { DebugProtocol as dap } from '@vscode/debugprotocol';
 
 export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 
@@ -10,8 +10,8 @@ export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 		this.decorationType = vs.window.createTextEditorDecorationType({
 			after: {
 				margin: '0 0 0 3em',
-				backgroundColor: new vs.ThemeColor('gitlens.trailingLineBackgroundColor'),
-				color: new vs.ThemeColor('gitlens.trailingLineForegroundColor'),
+				backgroundColor: new vs.ThemeColor('debugutils.trailingLineBackgroundColor'),
+				color: new vs.ThemeColor('debugutils.trailingLineForegroundColor'),
 				fontWeight: 'normal',
 				fontStyle: 'normal',
 				textDecoration: 'none',
@@ -61,8 +61,7 @@ export class PerfTipsProvider implements vs.DebugAdapterTracker  {
 		if (!frame.source)
 			return;
 
-		// work around https://github.com/microsoft/vscode/issues/114229
-		const srcuri = frame.source.sourceReference ? vs.debug.asDebugSourceUri(frame.source) : vs.Uri.file(frame.source.path!);
+		const srcuri = vs.debug.asDebugSourceUri(frame.source);
 		// FIXME: this will open another editor if we are in a different view column
 		const editor = await vs.window.showTextDocument(srcuri);
 
