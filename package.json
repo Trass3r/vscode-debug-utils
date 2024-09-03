@@ -1,13 +1,13 @@
 {
 	"name": "vscode-debug-utils",
-	"displayName": "VSCode PerfTips",
+	"displayName": "VSCode PerfTips/CodeMap",
 	"author": {
 		"name": "Andreas Hollandt"
 	},
 	"repository": {
 		"url": "https://github.com/Trass3r/vscode-debug-utils"
 	},
-	"description": "Implements debugger PerfTips as known from Visual Studio",
+	"description": "Implements debugger PerfTips and CodeMap as known from Visual Studio",
 	"publisher": "trass3r",
 	"license": "MIT",
 	"version": "0.0.3",
@@ -23,17 +23,26 @@
 	],
 	"main": "./out/extension.js",
 	"scripts": {
-		"bundle": "./node_modules/.bin/esbuild src/extension.ts --bundle --target=es2018 --minify --sourcemap --external:vscode --outfile=./out/extension.js",
-		"vscode:prepublish": "npm run compile",
-		"package": "node_modules/.bin/vsce package",
+		"bundle": "esbuild src/extension.ts --bundle --target=es2018 --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"vscode:prepublish": "npm run bundle -- --minify",
+		"esbuild": "npm run bundle -- --sourcemap",
+		"esbuild-watch": "npm run bundle -- --sourcemap --watch",
+		"esbuild-web": "npm run bundle -- --sourcemap --platform=browser",
+		"package": "vsce package",
+		"publish": "vsce publish",
 		"compile": "tsc -p ./",
 		"lint": "eslint src --ext ts",
 		"watch": "tsc -watch -p ./",
 		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"open-in-browser": "npm run esbuild-web && vscode-test-web --browserType=chromium --open-devtools --extensionDevelopmentPath=. --extensionId tintinweb.graphviz-interactive-preview --extensionId ms-vscode.mock-debug /tmp"
 	},
 	"extensionDependencies": [
+		"tintinweb.graphviz-interactive-preview"
 	],
+	"dependencies": {
+		"ts-graphviz": "^0.16.0"
+	},
 	"devDependencies": {
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
@@ -43,6 +52,7 @@
 		"@typescript-eslint/parser": "^5.33.0",
 		"@vscode/debugprotocol": "^1.57.0",
 		"@vscode/test-electron": "^2.1.5",
+		"@vscode/test-web": "*",
 		"esbuild": "^0.14.54",
 		"eslint": "^8.21.0",
 		"glob": "^8.0.3",
@@ -79,6 +89,13 @@
 					"light": "#99999959",
 					"highContrast": "#99999999"
 				}
+			}
+		],
+		"commands": [
+			{
+				"command": "debug-utils.showCodeMap",
+				"title": "Build a Code Map during debugging",
+				"when": "inDebugMode"
 			}
 		]
 	}
